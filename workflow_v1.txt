@@ -1,0 +1,59 @@
+Explain the repo: Backend, and Frontend are already setup
+it already has server.js (defines app.use('/api/posts', postRoutes);) then config folder already has db.js (code to connect to MongoDB)
+
+Rename .env.example to .env and copy Connection string from MongoDB
+MONGODB_URI=mongodb://root:root@clustertest-shard-00-00.r7cib.mongodb.net:27017,clustertest-shard-00-01.r7cib.mongodb.net:27017,clustertest-shard-00-02.r7cib.mongodb.net:27017/redditmockDB?ssl=true&replicaSet=atlas-qd2g7v-shard-0&authSource=admin&appName=ClusterTest
+
+Introduce GitHub Copilot
+Explain GitHub Copilot features like Inline suggestions, Inline chat (Ctrl+I), Plan, Ask, Agent, Chat participants (@workspace), Slash commands (/explain), 
+
+*************************************************************
+
+Task 1: Backend - Fetch Posts
+Implement an API that allows a user to fetch all existing posts. Use GitHub Copilot to:
+a. Build the required DB models and populate them with dummy data.
+b. Create controller logic
+c. Add the route
+
+Ask Copilot to create the required DB models to fetch all existing posts in the models folder
+Ask Copilot to create a seed script in the seed folder to populate with dummy data in MongoDB
+npm install then npm run seed
+Go to MongoDB: redditmockDB and show the entries
+
+Ask Copilot to create controller logic in the controller folder and route logic in routes folder to fetch all existing posts from MongoDB
+Use Postman to test PostAPI
+from server.js, we know the path: app.use('/api/posts', postRoutes);
+npm start for Backend
+
+*************************************************************
+
+Frontend
+Task 2: Frontend - Consume the API
+Implement a minimalist Reddit-style feed. Create a React component to display the list of all posts as shown below. Use Github Copilot to help you build this.
+
+Copy paste UI and Ask mode Copilot: ask for a plan and components required to build frontend
+
+npm install react-router-dom axios
+
+Idea is: Home.jsx (axios to fetch data and renders PostList) => PostList.jsx (for loop of posts and renders PostCard.jsx)
+NavBar component has Links to Home and CreatePost
+Add Navbar and Routes in App.jsx
+
+Ask Copilot to create CSS to match the UI pasted
+npm run dev to see Frontend
+
+*************************************************************
+
+Task 3: Test and Document the code
+a. Generate unit tests for the controller that fetches all the Posts. Use Vitest for testing.
+b. Create a README.md file for the project. Amongst other things, it should clearly document the APIs implemented.
+c. Use Github Copilot to help you with the above tasks.
+
+Ask Copilot to Generate unit tests for the controller that fetches all the Posts using vitest
+npm test -- src/controller/__tests__/postController.test.js --run
+
+Ask Coplit to Create a README.md file for the project, it should clearly document the APIs implemented
+Ctrl + Shift + V to preview .md file
+
+******************************************************************
+If you have more time, Ask Copilot to create Launch.json to debug unit tests

@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Backend Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/RedditMock/backend/server.js",
+      "cwd": "${workspaceFolder}/RedditMock/backend",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/RedditMock/backend/.env",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Debug Backend Current Vitest File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/RedditMock/backend/node_modules/vitest/vitest.mjs",
+      "args": [
+        "run",
+        "${file}",
+        "--reporter=verbose",
+        "--pool=forks"
+      ],
+      "cwd": "${workspaceFolder}/RedditMock/backend",
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Debug All Backend Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/RedditMock/backend/node_modules/vitest/vitest.mjs",
+      "args": [
+        "run",
+        "--reporter=verbose",
+        "--pool=forks"
+      ],
+      "cwd": "${workspaceFolder}/RedditMock/backend",
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    }
+  ]
+}

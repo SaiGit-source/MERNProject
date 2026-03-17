@@ -11,7 +11,7 @@ a. Build the required DB models and populate them with dummy data.
 
 we asked Copilot and created Post.js.
 next to populate, Copilot created a seed script and made an entry in package.json
-now it runs nom install then npm run seed
+now it runs npm install then npm run seed
 You never run the seed script in production — it would delete real user data because of the deleteMany at the top.
 
 MongoDB connected successfully
@@ -80,5 +80,83 @@ Frontend Testing
 press Ctrl + Shift + V (Windows) to preview Markdown (.md) files
 Write unit tests for getAllPosts controller using Vitest + Supertest for HTTP mocking, 
 then create a comprehensive README.md documenting the API and project setup.
+
+Frontend: add test: vitest to package.json
+create backend/src/controller/__tests__/postController.test.js
+create vitest.config.js
+npm test -- src/controller/__tests__/postController.test.js --run
+Test Files  1 passed (1)
+Tests  2 passed (2)
+
+
+What vi.mock('../../models/Post.js', ...) does:
+It intercepts the import of backend/src/models/Post.js.
+Instead of loading the real Mongoose model, it gives the test a fake object.
+That fake object has only the part we need: find.
+
+To debug test: put breakpoints and run npx vitest src/controller/__tests__/postController.test.js --run
+node --inspect-brk ./node_modules/vitest/vitest.mjs src/controller/__tests__/postController.test.js --run
+Ask Copilot to create Launch.json to start debugging
+
+for running real tests: npm install -D mongodb-memory-server
+
+The second argument to .populate() is a field selection (projection) — it tells Mongoose which fields to include from the referenced User document.
+
+'author' — the field on Post to populate (it holds a User _id reference)
+'username email' — a space-separated list of fields to pull from User; without this, the entire user document would be embedded
+So instead of getting the full user object (including hashed passwords, __v, etc.), only username and email are returned. It's equivalent to doing SELECT username, email FROM users rather than SELECT *.
+
+Create a README.md file for the project. Amongst other things, it should clearly document the APIs implemented.
+press Ctrl + Shift + V (Windows) to preview Markdown (.md) files
+
+
+What happens in your query:
+
+Post.find() fetches full post documents (title, body, tags, upvotes, createdAt, etc.).
+.populate('author', 'username email') replaces author ObjectId with a user object containing only username and email (plus _id by default).
+So your frontend gets:
+
+post fields like title and body from Post
+author fields from populated User limited to username and email
+That is why post.title and post.body still exist in PostCard.jsx:17 and PostCard.jsx:18.
+
+
+
+
+
+
+
+These are GitHub Copilot Chat features in VS Code:
+
+Chat Participants (@name)
+Specialized agents you can invoke in the chat. They have focused knowledge of a specific domain. Examples:
+
+@workspace — understands your entire codebase, can answer questions about it
+@workspace /explain how does the frontend connect to the backend?
+
+@vscode — knows VS Code settings, commands, and extensions
+@terminal — can explain or run terminal commands
+Slash Commands (/command)
+Shortcuts that tell Copilot what kind of task you want to do. Examples:
+
+/explain — explain selected code
+/explain — highlight getAllPosts in postController.js, then type: /explain
+/fix — suggest a fix for an error
+/tests — generate tests for selected code
+/doc — generate documentation comments
+/new — scaffold a new file or project
+Often combined with participants: @workspace /explain or @workspace /tests
+
+Custom Instructions
+A way to give Copilot persistent context about how you want it to behave — your coding standards, preferred frameworks, response style, etc. Defined in:
+
+A .github/copilot-instructions.md file in your repo (applies to the whole workspace)
+Or VS Code's settings.json under github.copilot.chat.codeGeneration.instructions
+For example you could tell it: "Always use ES modules, prefer async/await, use Mongoose for MongoDB" — and it will apply that context to every response without you repeating it.
+
+
+Inline Chat lets you invoke Copilot directly inside the editor, right at your cursor position, without switching to the Chat panel.
+How to open it: Ctrl + I (Windows) while your cursor is in a file.
+What it looks like: A small input box appears inline in the editor where your cursor is. You type a prompt, Copilot generates code, and a diff is shown in-place — you can Accept, Discard, or ask it to Regenerate.
 
 
