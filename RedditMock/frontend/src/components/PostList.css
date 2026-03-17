@@ -1,0 +1,38 @@
+.post-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.post-list-header {
+  margin-bottom: 2rem;
+}
+
+.post-list-header h2 {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.posts-grid {
+  display: grid;
+  gap: 0;
+}
+
+.post-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .post-list {
+    padding: 1rem 0.5rem;
+  }
+
+  .post-list-header h2 {
+    font-size: 1.3rem;
+  }
+}

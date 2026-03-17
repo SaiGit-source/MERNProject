@@ -1,0 +1,61 @@
+Workflow BigPicture:
+
+General installations:
+Install MongoDB or use MongoDb cloud
+connect, get connection string without SRV
+install React Developer tools, NodeJs, Postman
+
+Frontend setup:
+Install application with vite: npm create vite@latest, Soccer> npm create vite@latest  (Soccer folder)
+
+Backend setup in server:
+go to backend folder then npm init
+Setup babel server: npm i --save-dev @babel/cli @babel/core @babel/node @babel/preset-env
+ensure dev dependencies are installed in package.json
+backend> npm i body-parser cors express mongoose nodemon
+go to backend folder, create .babelrc
+open package.json and replace scripts
+create index.js inside the backend folder
+npm start and http://localhost:4000/
+add 3 folders in backend: controllers, models, routes
+create 3 .js files inside them respectively: playerControllers.js, playerModel.js, soccerRoutes.js
+
+MongoDB setup:
+open index.js and import mongoose
+open playerModel.js create mongoose schema
+add Post endpoints in playerController.js
+create route in soccerRoutes.js
+open Postman and test localhost:4000/players -> x-www.form-urlencoded option
+go to MongoDB Atlas and ensure
+
+repeat the same process of GET API, add in playerControllers.js 
+add in soccerRoutes.js
+open Postman and test localhost:4000/players -> x-www.form-urlencoded option and GET request
+go to Mongo to ensure
+
+get an endpoint to getByPlayerID
+add in playerController.js 
+in soccerRoutes.js, we add a new path app.routes('/players/:playerId')
+same thing for put (updatePlayer) and delete requests
+
+Frontend setup:
+open index.html file in frontend folder
+open Materialize css: https://materializecss.com/
+Get started => CDN
+add CDN into index.html:     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+copy script from CDN and paste into html body:     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+create folders inside frontend folder: components/player
+create 3 files: playerForm.jsx, playerList.jsx, playerSingle.jsx
+npm run dev for Vite
+go to main.jsx and fix App.jsx import if throws an error
+open App.jsx and remove all HTML content
+add main structure in App.jsx file
+open playerForm.jsx and add content
+edit playerList.jsx
+go back to App.jsx and import React
+Set Css in App.jsx return: col s3 will take 3 columns for example
+install Axios, to query backend server: npm install axios
+get players when "componentDidMount()" and update players state
+pass a prop {players} to PlayerList
+do playerSingle.jsx
+then playerForm.jsx

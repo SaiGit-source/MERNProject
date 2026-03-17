@@ -1,0 +1,42 @@
+#root {
+  min-height: 100vh;
+  background-color: #f6f7f9;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.posts-header {
+  padding: 2rem 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.posts-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+.posts-section {
+  padding: 2rem 1rem;
+}
+
+.posts-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .posts-section {
+    padding: 1rem 0.5rem;
+  }
+  
+  .posts-header h1 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,27 @@
+.home {
+  min-height: calc(100vh - 60px);
+  background-color: #f6f7f9;
+}
+
+.loading,
+.error,
+.empty {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.loading {
+  color: #0066cc;
+  font-weight: 500;
+}

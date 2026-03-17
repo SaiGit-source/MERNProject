@@ -1,0 +1,84 @@
+Rename .env.example to .env and copy Connection string from MongoDB
+Give it to Copilot to add database name redditmock to the connection string
+then update .env
+
+MongoDB setup:
+open server.js and import mongoose
+
+Task 1: Backend - Fetch Posts
+Implement an API that allows a user to fetch all existing posts. Use GitHub Copilot to:
+a. Build the required DB models and populate them with dummy data.
+
+we asked Copilot and created Post.js.
+next to populate, Copilot created a seed script and made an entry in package.json
+now it runs nom install then npm run seed
+You never run the seed script in production — it would delete real user data because of the deleteMany at the top.
+
+MongoDB connected successfully
+Inserted 3 users
+Inserted 5 posts
+Seed complete
+
+Go to MongoDB: redditmockDB and show the entries
+
+Next ask Copilot to write controller logic in the controller folder to fetch all the existing posts from the 
+it creates the postController file and the postRoutes file
+from server.js, we know the path: app.use('/api/posts', postRoutes);
+npm start
+GET http://localhost:5000/api/posts to fetch all , in Postman
+
+
+Frontend
+Ask mode Copilot: ask for a plan and components required to build frontend
+npm install react-router-dom axios
+
+frontend/src/
+├── components/
+│   ├── Navbar.jsx          ← "OpenForum" header + nav links
+│   ├── PostList.jsx         ← renders the list of posts
+│   └── PostCard.jsx         ← single post card (title, body, upvotes, author, date)
+├── pages/
+│   └── Home.jsx             ← Home page, fetches posts and passes to PostList
+├── App.jsx                  ← sets up React Router routes
+└── main.jsx                 ← unchanged
+
+Ask Copilot to create Home.jsx, then the components one by one
+Home.jsx:
+we fetch data from backend using axios
+useEffect takes two arguments: a function and a dependency array. 
+[] (empty)	Once only, when the component first appears on screen
+useEffect runs only once, when the component loads for the first time.
+
+After Home.jsx, finally App.jsx is updated
+
+CSS is updated
+New CSS files created:
+
+Navbar.css — Sticky navigation with "OpenForum" branding
+PostCard.css — Individual post cards with upvotes, title, description, author, and date
+PostList.css — Post list container with "All Posts" header
+Home.css — Loading and error states
+Updated CSS files:
+
+App.css — Responsive layout with max-width container
+index.css — Clean global styling, light theme with proper contrast
+
+Steps Completed
+
+Global Styles Reset — Updated index.css with light theme (#f6f7f9 bg, #1a1a1a text), removed dark mode, reset margins, styled buttons
+App Layout — Updated App.css with flexible containers, max-width 900px, responsive breakpoints
+Navigation Bar — Created Navbar.css with sticky positioning, orange "OpenForum" logo, blue "Create Post" button, links with hover effects
+Post Cards — Created PostCard.css with vote sidebar (left), content area (right), title, excerpt, author/date metadata, hover shadow effects
+Post List — Created PostList.css with "All Posts" header, post dividers, centered 900px container
+Home Page — Created Home.css for loading/error state styling (blue text, red error background)
+Component Updates — Added CSS imports to Navbar.jsx, PostCard.jsx, PostList.jsx, Home.jsx and updated markup for semantic HTML
+
+npm run dev
+
+
+Frontend Testing
+press Ctrl + Shift + V (Windows) to preview Markdown (.md) files
+Write unit tests for getAllPosts controller using Vitest + Supertest for HTTP mocking, 
+then create a comprehensive README.md documenting the API and project setup.
+
+
