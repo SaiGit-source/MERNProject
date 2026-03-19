@@ -159,4 +159,27 @@ Inline Chat lets you invoke Copilot directly inside the editor, right at your cu
 How to open it: Ctrl + I (Windows) while your cursor is in a file.
 What it looks like: A small input box appears inline in the editor where your cursor is. You type a prompt, Copilot generates code, and a diff is shown in-place — you can Accept, Discard, or ask it to Regenerate.
 
+In GitHub Copilot, Custom instructions are rules you write to steer how Copilot responds in chat and coding tasks.
+Think of them as:
+Persistent guidance for style and behavior.
+A way to encode team conventions once instead of repeating them every prompt.
+A filter for how Copilot plans, edits, explains, and validates code.
 
+We could add in settings.json file:
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "text": "Use ES modules, prefer async/await, and follow existing folder conventions."
+    }
+  ]
+}
+
+
+or we could create .github/copilot-instructions.md file with custom instructons for GitHub Copilot
+This test suite verifies the getAllPosts controller behavior. The beforeEach block calls vi.clearAllMocks() so every test starts with clean mock call history and avoids cross-test contamination.
+In the first test, mock data (posts) represents the expected result. The chain Post.find().populate().sort() is simulated by mocking Post.find to return an object with populate, and populate to return an object with sort. The sort mock resolves to the posts array, matching async database behavior. After calling getAllPosts({}, res), assertions confirm the query chain is invoked correctly (populate('author', 'username email'), sort({ createdAt: -1 })) and that the controller sends HTTP 200 with the posts as JSON.
+The second test (starting at the bottom of the excerpt) prepares an error case (Database unavailable) to verify failure handling. Its purpose is to ensure that if post retrieval fails, the controller responds with a 500 status instead of returning normal
+
+toHaveBeenCalledTimes(1) is a Vitest/Jest mock assertion that checks a mocked function was called exactly once.
+In your test, this line:
+expect(Post.find).toHaveBeenCalledTimes(1);

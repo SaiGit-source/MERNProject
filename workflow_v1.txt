@@ -5,7 +5,7 @@ Rename .env.example to .env and copy Connection string from MongoDB
 MONGODB_URI=mongodb://root:root@clustertest-shard-00-00.r7cib.mongodb.net:27017,clustertest-shard-00-01.r7cib.mongodb.net:27017,clustertest-shard-00-02.r7cib.mongodb.net:27017/redditmockDB?ssl=true&replicaSet=atlas-qd2g7v-shard-0&authSource=admin&appName=ClusterTest
 
 Introduce GitHub Copilot
-Explain GitHub Copilot features like Inline suggestions, Inline chat (Ctrl+I), Plan, Ask, Agent, Chat participants (@workspace), Slash commands (/explain), 
+Explain GitHub Copilot features like Inline suggestions, Inline chat (Ctrl+I), Plan, Ask, Agent, Chat participants (@workspace), Slash commands (/explain), Custom instructions (Persistent guidance for style and behavior)
 
 *************************************************************
 
@@ -45,12 +45,13 @@ npm run dev to see Frontend
 *************************************************************
 
 Task 3: Test and Document the code
-a. Generate unit tests for the controller that fetches all the Posts. Use Vitest for testing.
+a. Generate unit tests for the controller, in the _tests_ folder, that fetches all the Posts. Use Vitest for testing.
 b. Create a README.md file for the project. Amongst other things, it should clearly document the APIs implemented.
 c. Use Github Copilot to help you with the above tasks.
 
 Ask Copilot to Generate unit tests for the controller that fetches all the Posts using vitest
 npm test -- src/controller/__tests__/postController.test.js --run
+npm run test
 
 Ask Coplit to Create a README.md file for the project, it should clearly document the APIs implemented
 Ctrl + Shift + V to preview .md file
